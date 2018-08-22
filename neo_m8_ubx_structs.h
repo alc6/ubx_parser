@@ -85,8 +85,59 @@ typedef struct {
 	bool 			confirmedDate;		/* 1 = UTC Date validity could be confirmed (see Time Validity section for details) */
 	bool				confirmedTime;		/* 1 = UTC Time of Day could be confirmed (see Time Validity section for details) */
 
-} ubx_nav_pvt_t;
+} ubx_nav_pvt_msg_t;
 
+/* See the page 296 of UBX-13003221 - R15 for the units and scalings */
+typedef struct {
+	unsigned long  iTOW;			/*(ms) GPS time of week of the navigation epoch. */
+	unsigned char version;		/* Message version (0 for this version) */
+	/* unsigned char reserved1[3]; */
+
+	signed long 	  roll;			/* Vehicle roll. */
+	signed long 	  pitch;			/* Vehicle pitch */
+	signed long 	  heading;		/* Vehicle heading */
+
+	unsigned long accRoll;		/* Vehicle roll accuracy */
+	unsigned long accPitch;		/* Vehicle pitch accuracy */
+	unsigned long accHeading;	/* Vehicle heading accuracy */
+
+}ubx_nav_att_msg_t;
+
+/* See the page 298 and 299 of UBX-13003221 - R15 for the units and scalings */
+/* Description Dilution of precision */
+/* Comment:
+ * 	• DOP values are dimensionless.
+ *  • All DOP values are scaled by a factor of 100. If the unit transmits a value of e.g. 156, the
+		DOP value is 1.56
+ */
+typedef struct {
+	unsigned long  iTOW;		/*(ms) GPS time of week of the navigation epoch. */
+	unsigned short gDOP;		/* Geometric DOP */
+	unsigned short pDOP;		/* Position DOP */
+	unsigned short tDOP;		/* Time DOP */
+	unsigned short vDOP;		/* Vertical DOP */
+	unsigned short hDOP;		/* Horizontal DOP */
+	unsigned short nDOP;		/* Northing DOP */
+	unsigned short eDOP;		/* Easting DOP */
+}ubx_nav_dop_msg_t;
+
+
+/* NAV-ODO: Odometer Solution */
+/* See the page 302 of UBX-13003221 - R15 for the units and scalings */
+/* Comment:
+ * 	This message outputs the traveled distance since last reset (see NAV-RESETODO) together
+ *  with an associated estimated accuracy and the total cumulated ground distance (can only
+ *  be reset by a cold start of the receiver).
+ */
+typedef struct {
+	unsigned char  version; 		/* Message version (0 for this version) */
+/* unsigned char reserved1[3]; */
+	unsigned long  iTOW;			 /*(ms) GPS time of week of the navigation epoch. */
+	unsigned long  distance;		 /* Ground distance since last reset */
+	unsigned long totalDistance; /* Total cumulative ground distance */
+	unsigned long distanceStd;	 /* Ground distance accuracy (1-sigma) */
+
+}ubx_nav_odo_msg_t;
 
 
 

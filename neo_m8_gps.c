@@ -303,7 +303,7 @@ uint16_t neoGetPayloadSize()
 	return ValidUBXMsg.header.length;
 }
 
-void UBXUpdate_NAV_PVT(ubx_nav_pvt_t * dest)
+void UBXUpdate_NAV_PVT(ubx_nav_pvt_msg_t * dest)
 {
 	UBX_Parse_Raw_To_NAV_PVT(ValidUBXMsg.payload, ValidUBXMsg.header.length, dest);
 }

@@ -11,6 +11,6 @@
 #include "neo_m8_ubx_structs.h"
 
 /* Input a UBX payload, output a parsed ubx_nav_pvt_t struct */
-bool UBX_Parse_Raw_To_NAV_PVT(char* buffer, uint32_t len, ubx_nav_pvt_t * dest);
+bool UBX_Parse_Raw_To_NAV_PVT(char* buffer, uint32_t len, ubx_nav_pvt_msg_t * dest);
 
 #endif /* NEO_M8_CONVERSION_H_ */

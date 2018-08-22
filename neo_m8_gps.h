@@ -62,7 +62,7 @@ uint8_t neoGetMsgId();
 uint16_t neoGetPayloadSize();
 
 /* Updates */
-void UBXUpdate_NAV_PVT(ubx_nav_pvt_t * dest);
+void UBXUpdate_NAV_PVT(ubx_nav_pvt_msg_t * dest);
 
 
 /* Private API */

@@ -23,7 +23,7 @@
 #include "neo_m8_ubx_structs.h"
 #include "neo_m8_conversion.h"
 
-ubx_nav_pvt_t navPvt;
+ubx_nav_pvt_msg_t navPvt;
 
 static char dbg_buf[128]; //store dbg msg
 static uint32_t s; //store n elts
